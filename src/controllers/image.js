@@ -1,23 +1,46 @@
 const path = require('path');
 const { randomNumber } = require('../helpers/libs');
 const fs = require('fs-extra');
+
+const { Image } = require('../model');
+const { json } = require('express');
 const ctrl = {};
 
 ctrl.index = (req, res) => {
 
 };
-ctrl.create = async (req, res) => {
+ctrl.create =  (req, res) => {
+
+    const saveImage = async () =>{
     const imgUrl = randomNumber();
-    console.log(imgUrl);
-    const imageTempPath = req.file.path;
-    const ext = path.extname(req.file.originalname).toLocaleLowerCase();
-    const targetPath = path.resolve(`src/public/upload/${imgUrl}${ext}`)
+    const images = Image.find({filename: imgUrl});
+    if(images.length > 0){
+      imgUrl = randomNumber();
+      saveImage();
+    } else{
+      console.log(imgUrl);
+      const imageTempPath = req.file.path;
+      const ext = path.extname(req.file.originalname).toLocaleLowerCase();
+      const targetPath = path.resolve(`src/public/upload/${imgUrl}${ext}`)
+      
+      if(ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.gif'){
+          await fs.rename(imageTempPath, targetPath);
+          const newImg = new Image({
+            title: req.body.title,
+            filename: imgUrl + ext,
+            description: req.body.description
+          });
+         const imgadd = await newImg.save();
+         //res.redirect('/images');
+         res.send('Todo Good')
+      } else{
+        await fs.unlink(imageTempPath);
+        res.status(505).json({error: 'Solo imagenes que son permitidas'})
+      }
+    } 
+  };
+    saveImage();
     
-    if(ext === '.png' || ext === '.jpg' || ext == '.jpeg' || ext === '.gif'){
-       await fs.rename(imageTempPath, targetPath);
-    }
-    
-    res.send('Works');  
 };
 
 ctrl.like = (req, res) => {
