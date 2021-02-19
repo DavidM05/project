@@ -9,7 +9,9 @@ body {
 
   }
 
-  .navbar-brand img{
-    height: 50%;
-  }
-
+  ul img {
+    width: 35px;
+    height: 35px;
+    
+ }
+ 
