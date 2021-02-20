@@ -3,7 +3,7 @@ const { randomNumber } = require('../helpers/libs');
 const fs = require('fs-extra');
 
 const { Image } = require('../model');
-const { json } = require('express');
+
 const ctrl = {};
 
 ctrl.index = (req, res) => {

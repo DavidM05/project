@@ -8,7 +8,7 @@ const ImageSchema = new Schema({
     filename: {type: String},
     views: {type: Number, default: 0},
     likes: {type : Number, default: 0},
-    date :{type: Date, default: Date.now}
+    timestamp :{type: Date, default: Date.now}
 });
 
 ImageSchema.virtual('uniqueId')
@@ -17,4 +17,4 @@ ImageSchema.virtual('uniqueId')
     });
 
 
-module.exports = mongoose.model('image', ImageSchema)
+module.exports = mongoose.model('image', ImageSchema);
