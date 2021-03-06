@@ -1,8 +1,8 @@
 const path = require('path');
-const { randomNumber } = require('../helpers/libs');
+const { randomNumber } = require('../../helpers/libs');
 const fs = require('fs-extra');
 
-const { ImgMarket } = require('../model');
+const { ImgMarket } = require('../../model');
 
 const imgM = {};
 

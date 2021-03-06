@@ -7,7 +7,7 @@ const express = require('express');
 const errorHandler = require('errorhandler');
 
 const routes = require('../routes/index');
-
+const routes = require('../routes/market/market');
 
 module.exports = app => {
   

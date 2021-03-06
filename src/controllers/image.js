@@ -32,7 +32,7 @@ ctrl.create =  (req, res) => {
           });
          const imgadd = await newImg.save();
          //res.redirect('/images');
-         res.send('Todo Good')
+         res.redirect('/')
       } else{
         await fs.unlink(imageTempPath);
         res.status(505).json({error: 'Solo imagenes que son permitidas'})
