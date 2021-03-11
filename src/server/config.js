@@ -6,8 +6,7 @@ const multer = require('multer');
 const express = require('express');
 const errorHandler = require('errorhandler');
 
-const routes = require('../routes/index');
-const routes = require('../routes/market/market');
+const routes = require('../routes/index', '../routes/market/market');
 
 module.exports = app => {
   

@@ -4,7 +4,7 @@ const path = require('path');
 
 
 
-const ImgMarketShema = new schema({
+const ImgMarketShema = new Schema({
     title: {type: String},
     description : {type: String},
     filename: {type: String}
@@ -16,4 +16,4 @@ ImgMarketShema.virtual('uniqueId')
         return this.filename.replace(path.extname(this.filename),'')
     });
 
-module.exports = mongoose.model('image', ImgMarketShema);
+module.exports = mongoose.model('imageM', ImgMarketShema);
