@@ -1,10 +1,12 @@
-const express = require('express');
-const config = require('./server/config');
+require("dotenv").config();
+const express = require("express");
+const config = require("./server/config");
+const app = config(express());
 
-require('./database');
+// database
+require("./config/mongoose");
 
-const app =config (express());
-
-app.listen(app.get('port'),() => {
-    console.log('Server on port', app.get('port'));
+// Starting the server
+app.listen(app.get("port"), () => {
+  console.log("Server on port", app.get("port"));
 });
