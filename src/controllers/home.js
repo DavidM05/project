@@ -1,4 +1,3 @@
-
 const sidebar = require('../helpers/sidebar');
 const { Image } = require('../models');
 

@@ -1,2 +1,8 @@
+# Node
+node_modules
 
-src/public/upload/06diqhe.jpg
+# uploads folder
+src/public/upload
+
+# environment variables
+.env
